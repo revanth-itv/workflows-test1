@@ -14,6 +14,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
+          # STI
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -28,7 +29,7 @@ jobs:
       with:
         host: 35.232.17.159
         username: revanth
-        key: ${{ secrets.GCP_REVANTH_KEY }}
+        key: ${{ secrets.HOST_GIT_PRIVATE_KEY }}
         script: |
                 repo_name= 'workflows-test1'
 
