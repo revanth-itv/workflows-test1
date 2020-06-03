@@ -35,15 +35,15 @@ jobs:
         repo_link='git@github.com:revanth-itv/workflows-test1.git'
 
 
-        if cd /home/revanth/rick && ls -Fa | grep -q '.git/'
-                if cd /home/revanth/rick && git config --get remote.origin.url | grep -q "$repo_name"
+        if ( cd /home/revanth/rick && ls -Fa | grep -q '.git/' )
+                if ( cd /home/revanth/rick && git config --get remote.origin.url | grep -q "$repo_name" )
                 then
-                        cd /home/revanth/rick && git pull
+                        ( cd /home/revanth/rick && git pull )
                 fi
         else
-                cd /home/revanth/rick && git init
-                cd /home/revanth/rick && git remote add origin "$repo_link"
-                cd /home/revanth/rick && git pull origin master
+               ( cd /home/revanth/rick && git init )
+               ( cd /home/revanth/rick && git remote add origin "$repo_link" )
+               ( cd /home/revanth/rick && git pull origin master )
         then
                 echo "done"
         fi
