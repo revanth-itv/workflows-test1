@@ -31,5 +31,4 @@ jobs:
         username: revanth
         key: ${{ secrets.HOST_GIT_PRIVATE_KEY }}
         script: |
-                cd /home/revanth/rick
-                sh trial.sh
+                cd /home/revanth/rick && sh trial.sh
