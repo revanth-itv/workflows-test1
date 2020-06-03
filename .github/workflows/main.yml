@@ -28,7 +28,7 @@ jobs:
       with:
         host: 35.232.17.159
         username: revanth
-        password: ${{ secrets.GCP_REVANTH_KEY }}
+        key: ${{ secrets.GCP_REVANTH_KEY }}
         script: |
                 repo_name= 'workflows-test1'
 
