@@ -29,13 +29,14 @@ jobs:
       env:
         DEST_PATH: ${{ secrets.DEST_PATH }}
         REPO_URL: ${{ secrets.REPO_URL }}
+        REPO_NAME: ${{ secrets.REPO_NAME }}
       with:
         host: ${{ secrets.HOST_NAME }}
         username: ${{ secrets.USER_NAME }}
         key: ${{ secrets.HOST_GIT_PRIVATE_KEY }}
-        envs: DEST_PATH,REPO_URL
+        envs: DEST_PATH,REPO_URL,REPO_NAME
         script: |
-          if (( cd $DEST_PATH && '.git/' in ls -Fa | grep -q .git/ & 'workflows-test1' in cd $DEST_PATH && git config --get remote.origin.url ))
+          if (( cd $DEST_PATH && '.git/' in ls -Fa | grep -q .git/ & $REPO_NAME in cd $DEST_PATH && git config --get remote.origin.url ))
           then
                   cd $DEST_PATH && git pull origin master
           else
