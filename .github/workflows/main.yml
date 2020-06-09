@@ -44,3 +44,4 @@ jobs:
                   cd $DEST_PATH && git remote add origin $REPO_URL 
                   cd $DEST_PATH && git pull origin master
           fi
+          rsync -av --progress /home/revanth/rick /home/revanth/abc123 --exclude .git --exclude .github
