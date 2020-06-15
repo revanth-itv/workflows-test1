@@ -30,11 +30,12 @@ jobs:
         DEST_PATH: ${{ secrets.DEST_PATH }}
         REPO_URL: ${{ secrets.REPO_URL }}
         REPO_NAME: ${{ secrets.REPO_NAME }}
+        NON_GIT_DIR: ${{ secrets.NON_GIT_DIR }}
       with:
         host: ${{ secrets.HOST_NAME }}
         username: ${{ secrets.USER_NAME }}
         key: ${{ secrets.HOST_GIT_PRIVATE_KEY }}
-        envs: DEST_PATH,REPO_URL,REPO_NAME
+        envs: DEST_PATH,REPO_URL,REPO_NAME,NON_GIT_DIR
         script: |
           if (( cd $DEST_PATH && '.git/' in ls -Fa | grep -q .git/ & $REPO_NAME in cd $DEST_PATH && git config --get remote.origin.url ))
           then
@@ -44,4 +45,4 @@ jobs:
                   cd $DEST_PATH && git remote add origin $REPO_URL 
                   cd $DEST_PATH && git pull origin master
           fi
-          rsync -av /home/revanth/rick/ /home/revanth/abc123 --exclude .git --exclude .github
+          rsync -av $DEST_PATH $NON_GIT_DIR --exclude .git --exclude .github
